@@ -1,5 +1,5 @@
 import { theme } from "@/constants";
-import ButtonProps from "@/types";
+import { ButtonProps } from "@/types";
 import { getBgVariantStyle, getTextVariantStyle } from "@/utils/utils";
 import { TouchableOpacity } from "react-native";
 import { Text } from "react-native";
@@ -10,12 +10,11 @@ const Button = ({
   bgVariant = "primary",
   textVariant = "secondary",
   className,
-  ...props
 }: ButtonProps) => (
   <TouchableOpacity
     testID="touchable-button"
     onPress={onPress}
-    className={`w-full h-[${theme.sizes.medium}px] rounded-full flex flex-row justify-center items-center shadow-md shadow-neutral-400/70 ${getBgVariantStyle(bgVariant)} ${className}`}
+    className={`w-full h-[${theme.sizes.medium}px] rounded-full flex flex-row justify-center items-center shadow-md shadow-neutral-400/70 bg-[#0286FF] ${className}`}
   >
     <Text className={`text-lg font-bold ${getTextVariantStyle(textVariant)}`}>
       {title}
