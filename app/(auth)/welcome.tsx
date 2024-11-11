@@ -1,12 +1,13 @@
 import Button from "@/components/Button";
 import { onboarding, theme } from "@/constants";
 import { router } from "expo-router";
-import { useRef, useState } from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import React, { useRef, useState } from "react";
+import { Text, TouchableOpacity, View, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Onboarding from "@/components/Onboarding";
 import Swiper from "react-native-swiper";
 
-const Onboarding = () => {
+const Welcome = () => {
   const swiperRef = useRef<Swiper>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -63,17 +64,19 @@ const Onboarding = () => {
         ))}
       </Swiper>
 
-      <Button
-        onPress={() =>
-          isLastSlide
-            ? router.replace("/(root)/home")
-            : swiperRef.current?.scrollBy(1)
-        }
-        title={isLastSlide ? "Get Started" : "Next"}
-        className="w-11/12 mt-10"
-      />
+      <View className="w-full px-6">
+        <Button
+          onPress={() =>
+            isLastSlide
+              ? router.replace("/(root)/home")
+              : swiperRef.current?.scrollBy(1)
+          }
+          title={isLastSlide ? "Get Started" : "Next"}
+          className="w-11/12 mt-10"
+        />
+      </View>
     </SafeAreaView>
   );
 };
 
-export default Onboarding;
+export default Welcome;
