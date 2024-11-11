@@ -1,5 +1,5 @@
 import { theme } from "../constants";
-import ButtonProps from "../types";
+import { ButtonProps } from "../types";
 
 const getBgVariantStyle = (variant: ButtonProps["bgVariant"]) => {
   const variants = {
