@@ -1,3 +1,11 @@
+import {
+  getCurrentPositionAsync,
+  LocationAccuracy,
+  LocationObject,
+  requestBackgroundPermissionsAsync,
+  requestForegroundPermissionsAsync,
+  watchPositionAsync,
+} from "expo-location";
 import { theme } from "../constants";
 import { ButtonProps } from "../types";
 
@@ -25,4 +33,35 @@ const getTextVariantStyle = (variant: ButtonProps["textVariant"]) => {
   return variants[variant!];
 };
 
-export { getBgVariantStyle, getTextVariantStyle };
+const requestLocationPermissions = async (
+  setLocation: (value: React.SetStateAction<LocationObject | null>) => void,
+) => {
+  const { granted } = await requestForegroundPermissionsAsync();
+  const { granted: backgroundGranted } =
+    await requestBackgroundPermissionsAsync();
+
+  if (granted && backgroundGranted) {
+    const currentPosition = await getCurrentPositionAsync();
+    setLocation(currentPosition);
+  }
+};
+
+const watchUserPosition = ({ callback }: { callback: Function }) => {
+  watchPositionAsync(
+    {
+      accuracy: LocationAccuracy.Highest,
+      timeInterval: 1000,
+      distanceInterval: 1,
+    },
+    (response) => {
+      callback(response);
+    },
+  );
+};
+
+export {
+  getBgVariantStyle,
+  getTextVariantStyle,
+  requestLocationPermissions,
+  watchUserPosition,
+};

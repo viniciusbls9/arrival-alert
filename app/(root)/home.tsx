@@ -5,47 +5,29 @@ import {
   requestBackgroundPermissionsAsync,
   getCurrentPositionAsync,
   LocationObject,
-  watchPositionAsync,
   LocationAccuracy,
 } from "expo-location";
 import { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
+import { requestLocationPermissions, watchUserPosition } from "@/utils/utils";
 
 const Home = () => {
   const [location, setLocation] = useState<LocationObject | null>(null);
 
-  const requestLocationPermissions = async () => {
-    const { granted } = await requestForegroundPermissionsAsync();
-    const { granted: backgroundGranted } = await requestBackgroundPermissionsAsync()
-
-    if (granted && backgroundGranted) {
-      const currentPosition = await getCurrentPositionAsync();
-      setLocation(currentPosition);
-    }
-  };
-
   useEffect(() => {
-    requestLocationPermissions();
+    requestLocationPermissions(setLocation);
   }, []);
 
   useEffect(() => {
-    watchPositionAsync(
-      {
-        accuracy: LocationAccuracy.Highest,
-        timeInterval: 1000,
-        distanceInterval: 1,
-      },
-      (response) => {
-        setLocation(response);
-      }
-    );
+    watchUserPosition({
+      callback: (response: LocationObject) => setLocation(response),
+    });
   }, []);
 
   return (
     <SafeAreaView className="flex-1 flex items-center justify-center">
       {location && (
         <MapView
-          // className="flex-1 w-full"
           style={styles.map}
           initialRegion={{
             latitude: location.coords.latitude,
