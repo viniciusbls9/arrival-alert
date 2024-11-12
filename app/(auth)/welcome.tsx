@@ -1,10 +1,10 @@
-import Button from "@/components/Button";
-import { onboarding, theme } from "@/constants";
+import Button from "@/src/components/Button";
+import { onboarding, theme } from "@/src/constants";
 import { router } from "expo-router";
 import React, { useRef, useState } from "react";
 import { Text, TouchableOpacity, View, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Onboarding from "@/components/Onboarding";
+import Onboarding from "@/src/components/Onboarding";
 import Swiper from "react-native-swiper";
 
 const Welcome = () => {

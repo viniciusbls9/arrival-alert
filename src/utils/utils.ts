@@ -6,12 +6,11 @@ import {
   requestForegroundPermissionsAsync,
   watchPositionAsync,
 } from "expo-location";
-import { theme } from "../constants";
-import { ButtonProps } from "../types";
+import { ButtonProps } from "@/types";
 
 const getBgVariantStyle = (variant: ButtonProps["bgVariant"]) => {
   const variants = {
-    primary: `bg-[${theme.colors.primary[500]}]`,
+    primary: "bg-primary-500",
     secondary: "bg-gray-500",
     danger: "bg-red-500",
     success: "bg-green-500",
@@ -27,7 +26,7 @@ const getTextVariantStyle = (variant: ButtonProps["textVariant"]) => {
     secondary: "text-gray-100",
     danger: "text-red-100",
     success: "text-green-100",
-    default: `bg-[${theme.colors.primary[500]}]`,
+    default: "bg-primary-500",
   };
 
   return variants[variant!];

@@ -1,15 +1,12 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import MapView, { Marker } from "react-native-maps";
-import {
-  requestForegroundPermissionsAsync,
-  requestBackgroundPermissionsAsync,
-  getCurrentPositionAsync,
-  LocationObject,
-  LocationAccuracy,
-} from "expo-location";
+import { LocationObject } from "expo-location";
 import { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
-import { requestLocationPermissions, watchUserPosition } from "@/utils/utils";
+import {
+  requestLocationPermissions,
+  watchUserPosition,
+} from "@/src/utils/utils";
 
 const Home = () => {
   const [location, setLocation] = useState<LocationObject | null>(null);

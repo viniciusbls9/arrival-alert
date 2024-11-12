@@ -1,6 +1,6 @@
 import { act, render, userEvent } from "@testing-library/react-native";
 
-import Button from "@/components/Button";
+import Button from "@/src/components/Button";
 
 describe("Button component", () => {
   const onPressMock = jest.fn();

@@ -1,6 +1,6 @@
-import { theme } from "@/constants";
+import { theme } from "@/src/constants";
 import { ButtonProps } from "@/types";
-import { getBgVariantStyle, getTextVariantStyle } from "@/utils/utils";
+import { getBgVariantStyle, getTextVariantStyle } from "@/src/utils/utils";
 import { TouchableOpacity } from "react-native";
 import { Text } from "react-native";
 

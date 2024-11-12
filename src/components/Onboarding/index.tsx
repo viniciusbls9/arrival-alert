@@ -1,4 +1,4 @@
-import { theme } from "@/constants";
+import { theme } from "@/src/constants";
 import { OnboardingProps } from "@/types";
 import { View, Image, Text } from "react-native";
 

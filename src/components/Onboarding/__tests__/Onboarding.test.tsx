@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react-native";
 
 import Onboarding from "..";
-import { onboarding } from "@/constants";
+import { onboarding } from "@/src/constants";
 
 describe("Onboarding component", () => {
   test("should render onboarding component with correctly values", () => {
