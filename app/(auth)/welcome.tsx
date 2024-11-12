@@ -29,12 +29,12 @@ const Welcome = () => {
         loop={false}
         dot={
           <View
-            className={`w-[32px] h-[4px] mx-1 bg-[${theme.colors.primary[300]}] rounded-full`}
+            className={`w-[32px] h-[4px] mx-1 bg-primary-300 rounded-full`}
           ></View>
         }
         activeDot={
           <View
-            className={`w-[32px] h-[4px] mx-1 bg-[${theme.colors.primary[500]}] rounded-full`}
+            className={`w-[32px] h-[4px] mx-1 bg-primary-500 rounded-full`}
           ></View>
         }
         onIndexChanged={(index) => setActiveIndex(index)}
@@ -56,7 +56,7 @@ const Welcome = () => {
             </View>
 
             <Text
-              className={`text-lg font-JakartaSemiBold text-center text-[${theme.colors.general[500]}] mx-10 mt-3`}
+              className={`text-lg font-JakartaSemiBold text-center text-secondary-900 mx-10 mt-3`}
             >
               {item.description}
             </Text>
@@ -64,7 +64,7 @@ const Welcome = () => {
         ))}
       </Swiper>
 
-      <View className="w-full px-6">
+      <View className="w-full px-6 pb-6">
         <Button
           onPress={() =>
             isLastSlide
