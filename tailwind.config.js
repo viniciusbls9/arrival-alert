@@ -13,6 +13,11 @@ module.exports = {
         JakartaMedium: ["Jakarta-Medium", "sans-serif"],
         JakartaSemiBold: ["Jakarta-SemiBold", "sans-serif"],
       },
+      sizes: {
+        small: 25,
+        medium: 50,
+        large: 100,
+      },
       colors: {
         primary: {
           100: "#F5F8FF",
