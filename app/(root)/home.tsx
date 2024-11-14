@@ -2,27 +2,52 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import MapView, { Marker } from "react-native-maps";
 import { LocationObject } from "expo-location";
 import { useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, TextInput } from "react-native";
 import {
-  requestLocationPermissions,
-  watchUserPosition,
-} from "@/src/utils/utils";
+  getDirection,
+  getUserLocation,
+  requestUserLocationPermissions,
+} from "@/src/usecases";
 
 const Home = () => {
   const [location, setLocation] = useState<LocationObject | null>(null);
+  const [destination, setDestination] = useState("");
 
   useEffect(() => {
-    requestLocationPermissions(setLocation);
+    requestUserLocationPermissions(setLocation);
   }, []);
 
+  const onSubmit = () => {};
+
+  // const getDirectionFunc = async () => {
+  //   const directionResponse = await getDirection({
+  //     origin: "Avenida Pedro Lessa 2000",
+  //     destination: "Avenida Pedro lessa 2701",
+  //   });
+
+  //   console.log(directionResponse);
+  // };
+
+  // useEffect(() => {
+  //   getDirectionFunc();
+  // }, []);
+
   useEffect(() => {
-    watchUserPosition({
+    getUserLocation({
       callback: (response: LocationObject) => setLocation(response),
     });
   }, []);
 
   return (
     <SafeAreaView className="flex-1 flex items-center justify-center">
+      <TextInput
+        value={destination}
+        className="w-11/12 h-12 rounded-md my-6 drop-shadow-sm bg-white placeholder:p-4 placeholder:italic"
+        placeholder="Escolha seu endereço de destino"
+        defaultValue=""
+        onChangeText={(value) => setDestination(value)}
+      />
+
       {location && (
         <MapView
           style={styles.map}
